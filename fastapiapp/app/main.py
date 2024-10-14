@@ -1,16 +1,20 @@
 from fastapi import FastAPI, Request
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
-from app.models import ConversationRequest, ConversationResponse, ModelsResponse, QuestionsResponse
-from app.utils import converse, get_allowed_models
-from app.config import QUESTIONS, SYSTEM_PROMPT
+from .models import ConversationRequest, ConversationResponse, ModelsResponse, QuestionsResponse
+from .utils import converse, get_allowed_models
+from .config import QUESTIONS, SYSTEM_PROMPT
 
 app = FastAPI()
 
+
+
 system_context = SYSTEM_PROMPT
 
-app.mount("/static", StaticFiles(directory="static"), name="static")
-templates = Jinja2Templates(directory="templates")
+app.mount("/static", StaticFiles(directory="fastapiapp/static"), name="static")
+# Ensure that the path provided here is correct
+templates = Jinja2Templates(directory="fastapiapp/templates")
+
 
 @app.get("/")
 async def read_root(request: Request):

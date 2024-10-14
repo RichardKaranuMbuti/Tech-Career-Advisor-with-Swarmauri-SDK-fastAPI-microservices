@@ -2,7 +2,7 @@ from swarmauri.standard.llms.concrete.GroqModel import GroqModel
 from swarmauri.standard.messages.concrete.SystemMessage import SystemMessage
 from swarmauri.standard.agents.concrete.SimpleConversationAgent import SimpleConversationAgent
 from swarmauri.standard.conversations.concrete.MaxSystemContextConversation import MaxSystemContextConversation
-from app.config import API_KEY
+from .config import API_KEY
 
 def load_model(selected_model):
     return GroqModel(api_key=API_KEY, name=selected_model)
